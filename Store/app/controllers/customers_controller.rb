@@ -80,4 +80,9 @@ class CustomersController < ApplicationController
       format.json { head :no_content }
     end
   end
+    def require_sudo
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'admin' || password == 'catdance'
+    end
+  end
 end

@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    @categories = Category.order(:name)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.order(:name)
   end
 
   # POST /products
@@ -78,6 +80,11 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :no_content }
+    end
+  end
+    def require_sudo
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'admin' || password == 'catdance'
     end
   end
 end
