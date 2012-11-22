@@ -25,7 +25,8 @@ class CustomersController < ApplicationController
   # GET /customers/new.json
   def new
     @customer = Customer.new
-
+    @provinces = Province.order(:name)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @customer }
@@ -35,6 +36,7 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])
+    @provinces = Province.order(:name)
   end
 
   # POST /customers

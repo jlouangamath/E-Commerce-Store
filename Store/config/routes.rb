@@ -10,7 +10,8 @@ Store::Application.routes.draw do
   resources :categories
 
   resources :products
-
+  
+  match "storefront" => "storefront#index", :as => 'storefront', :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
