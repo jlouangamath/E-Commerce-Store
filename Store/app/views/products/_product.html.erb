@@ -1,14 +1,10 @@
 <div class="products">
-  <div class="actions">
-    <%= link_to 'edit', edit_products_path(products) %>
-    <%= link_to 'x', products, :method => :delete, :confirm => "Are you sure you want to delete #{product.name}?" %>
-  </div>
   <h2>
     <%= product.name %>
   </h2>
   <% if product.image.present? %>
     <p>
-      <%= image_tag product.image %>
+      <%= image_tag product.image, :width => "450", :height => "300" %>
     </p>
   <% else %>
     <p class="no_image">
