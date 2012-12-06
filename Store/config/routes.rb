@@ -1,4 +1,6 @@
 Store::Application.routes.draw do
+  resources :abouts
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -11,7 +13,9 @@ Store::Application.routes.draw do
 
   resources :products
   
+  root :to => "storefront#index"
   match "storefront" => "storefront#index", :as => 'storefront', :via => :get
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
